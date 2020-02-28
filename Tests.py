@@ -7,7 +7,7 @@ def testExtendedEuclid(x, y):
     a = dab[1]
     b = dab[2]
     assert(d == a * x + b * y)
-    print(dab)
+    # print(dab)
 
 
 testExtendedEuclid(54, 17)

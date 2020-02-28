@@ -19,16 +19,17 @@ def extendedEuclid(x, y):
         x, y = switched(x, y)
     eqs = {x: (1, 0),
            y: (0, 1)}
-    while (x != 0 and x != 1):
-        eqs[x - y] = (eqs[x][0] - eqs[y][0], eqs[x][1] - eqs[y][1])
-        x -= y
+    while (x != 0):
         if (x < y) and (x != 1):
             x, y = switched(x, y)
-        elif (x == 1 or y == 0):
+        if (x == 1 or y == 0):
             if swapped:
                 return (x, eqs[x][1], eqs[x][0])
             return (x, eqs[x][0], eqs[x][1])
+        scaleBy = (x // y)
+        eqs[x % y] = (eqs[x][0] - scaleBy * eqs[y][0], eqs[x][1] - scaleBy * eqs[y][1])
+        x = x % y
     if swapped:
-        return (y, eqs[1][1], eqs[1][0])
-    return (y, eqs[1][0], eqs[1][1])
+        return (y, eqs[y][1], eqs[y][0])
+    return (y, eqs[y][0], eqs[y][1])
 
